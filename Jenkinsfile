@@ -2,9 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
+        stage('Build (in parallel)') {
+            parallel{
+                stage('eureka server'){
+                    steps{
+                        dir('eureka-server'){
+                            bat 'mvn clean package -DskipTests=false'
+                        }
+                    }
+                }
+                stage('menu service'){
+                    steps{
+                        dir('menu-service'){
+                            bat 'mvn clean package -DskipTests=false'
+                        }
+                    }
+                }
+                stage('restaurant-service'){
+                    steps{
+                        dir('restaurant-service'){
+                            bat 'mvn clean package -DskipTests=false'
+                        }
+                    }
+                }
             }
         }
 
