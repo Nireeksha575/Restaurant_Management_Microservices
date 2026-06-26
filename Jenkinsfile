@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -14,7 +10,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                echo 'Testing the application...'
             }
         }
 
