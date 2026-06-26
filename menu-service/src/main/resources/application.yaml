@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: menu-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/rest_db
+    username: ${USER_NAME}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+Server:
+  port: 8081
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
